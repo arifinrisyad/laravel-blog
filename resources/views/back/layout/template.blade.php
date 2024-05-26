@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Dashboard Template · Bootstrap v5.0</title>
+    <title>@yield('title')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
     <!-- Bootstrap core CSS -->
@@ -29,6 +29,10 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('back/css/dashboard.css') }}" rel="stylesheet">
+
+  {{--panggil css dinamis perhalaman--}}
+  @stack('css')
+    
 </head>
 
 <body>
@@ -73,6 +77,8 @@
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
     <script src="{{ asset('back/js/dashboard.js') }}"></script>
+
+    @stack('js')
 </body>
 
 </html>

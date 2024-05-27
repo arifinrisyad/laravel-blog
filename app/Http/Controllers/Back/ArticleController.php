@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateArticleRequest;
 use Yajra\DataTables\Facades\DataTables;
 
 class ArticleController extends Controller
@@ -36,9 +38,9 @@ class ArticleController extends Controller
 
                 ->addColumn('button', function ($article) {
                     return '<div  class="text-center">
-              <a href="" class="btn btn-secondary">Detail</a>
-              <a href="" class="btn btn-primary">Edit</a>
-              <a href="" class="btn btn-danger">Delete</a>
+              <a href="article/'.$article->id.'" class="btn btn-secondary">Detail</a>
+              <a href="article/'.$article->id.'/edit" class="btn btn-primary">Edit</a>
+              <button onclick="deleteArticle(this)" data-id="' . $article->id . '" class="btn btn-danger">Delete</button>
               </div>';
                 })
                 //panggil custom kolom
@@ -68,7 +70,7 @@ class ArticleController extends Controller
         $file = $request->file('img');
 
         $fileName = uniqid().'.'.$file->getClientOriginalExtension();
-        $file->storeAs('public/back'. $fileName);
+        $file->storeAs('back/'. $fileName);
 
         $data['img'] = $fileName;
         $data['slug'] = Str::slug($data['title']);;
@@ -83,7 +85,9 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('back.article.show', [
+            'article' => Article::find($id)
+        ]);
     }
 
     /**
@@ -91,15 +95,39 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('back.article.update', [
+            'article'    => Article::find($id),
+            'categories' => Category::get()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateArticleRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+
+            $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+            $file->storeAs('back/'. $fileName);
+
+            //unlink img/ delete old img
+           storage::delete('back/'.$request->oldImg);
+    
+            $data['img'] = $fileName;
+        } else {
+            $data['img'] = $request->oldImg;
+        }
+        
+
+      
+        $data['slug'] = Str::slug($data['title']);;
+
+        Article::find($id)->update($data);
+
+        return redirect(url('article'))->with('success', 'Data article has been updated');
     }
 
     /**
@@ -107,6 +135,12 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Article::find($id); 
+        storage::delete('back/'.$data->img);
+        $data->delete();
+
+        return response()->json ([
+            'message' => 'Data article has been deleted'
+        ]);
     }
 }

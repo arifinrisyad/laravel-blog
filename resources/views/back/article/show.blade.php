@@ -23,7 +23,7 @@
               </tr>
               <tr>
                 <th>Description</th>
-                <td>: {{ $article->desc }}</td>
+                <td>: {!! $article->desc!!}</td>
               </tr>
               <tr>
                 <th>Image</th>

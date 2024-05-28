@@ -64,7 +64,9 @@
             </table>
         </div>
 
-
+  @include('back.user.create-modal')
+  @include('back.user.delete-modal')
+  @include('back.user.update-modal')
       
     </main>
 @endsection

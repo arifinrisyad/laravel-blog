@@ -11,7 +11,10 @@
         </div>
 
         <div class="mt3">
-            <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#modalCreate"> Register</button>
+           @if (auth()->user()->role == 1)
+           <button class="btn btn-success mb-2" data-bs-toggle="modal" 
+           data-bs-target="#modalCreate"> Register</button>
+           @endif
 
 
             @if ($errors->any())
@@ -55,7 +58,11 @@
                             <td>
                                 <div class="text-center">
                                     <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalupdate{{$item->id}}">Edit</button>
-                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldelete{{$item->id}}">Delete</button>
+                                    @if (auth()->user()->role == 1)
+                                   @if ($item->id !=auth()->user()->id)
+                                   <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaldelete{{$item->id}}">Delete</button>
+                                   @endif
+                                    @endif
                                 </div>
                             </td>
                         </tr>

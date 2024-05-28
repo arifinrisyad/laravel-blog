@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function() {
     
     Route::resource('/categories', CategoryController::class)->only([
         'index', 'store', 'update', 'destroy'
-    ]);
+    ])->middleware('UserAccess:1');
     
     Route::resource('/users', UserController::class);
     

@@ -15,8 +15,6 @@
                        
                     </div>
                 </div>
-
-               
             </div>
             <!-- Side widgets-->
             @include('front.layout.side-widget')

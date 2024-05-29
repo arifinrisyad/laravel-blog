@@ -41,9 +41,9 @@
                     @endforeach
                 </div>
                 <!-- Pagination-->
-                <div class="pagination justify-content-center my-4">
+               
                     {{ $articles->links() }}
-                </div>
+          
             </div>
             <!-- Side widgets-->
             @include('front.layout.side-widget')

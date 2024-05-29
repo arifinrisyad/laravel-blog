@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Front\ArticleController as FrontArticleController;
+use App\Http\Controllers\Front\CategoryController as FrontCategoryController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\UserController;
@@ -26,10 +27,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get( '/', [HomeController::class, 'index']);
+Route::get( '/about', [HomeController::class, 'about']);
 
 Route::get( '/p/{slug}', [FrontArticleController::class, 'show']);
 Route::get( '/articles', [FrontArticleController::class, 'index']);
 Route::post( '/articles/search', [FrontArticleController::class, 'index'])->name('search');
+
+Route::get('category/{slug}', [FrontCategoryController::class, 'index']);
 
 
 Route::middleware('auth')->group(function() {

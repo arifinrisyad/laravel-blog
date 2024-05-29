@@ -24,16 +24,20 @@ class ArticleController extends Controller
 
       return view('front.article.index', [
             'article' => $articles,
-            'keyword'  => $keyword
+            'keyword'  => $keyword,
+            'category_navbar'  => Category::latest()->take(3)->get()
       ]);
     }
 
     public function show($slug)
     {
+          $article = Article::whereSlug($slug)->firstOrFail();
+          $article->increment('views');
+        
       return view('front.article.show', [
-            'article' => Article::whereSlug($slug)->first(),
+            'article' => $article,
             'categories'  => Category::latest()->get(),
-          
+            'category_navbar'  => Category::latest()->take(3)->get()
       ]);
     }
 }

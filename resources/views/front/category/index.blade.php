@@ -1,6 +1,6 @@
 @extends('front.layout.template')
 
-@section('title', 'Article Blog - Arifin Risyad')
+@section('title', 'Category '. $category . '- Arifin - Risyad')
 
 @section('content')
     <!-- Page content-->
@@ -15,13 +15,11 @@
             </form>
         </div>
 
-          @if ($keyword)
-              <p>Showing articles with keyword : <b>{{ $keyword }}</b></p>
-              <a href="{{url('articles')}}" class="btn btn-secondary btn-sm mb-4">Reset</a>
-          @endif
+        
+              <p>Showing articles with category : <b>{{ $category }}</b></p>
 
         <div class="row">
-          @forelse ($article as $item)
+          @forelse ($articles as $item)
           <div class="col-4">
                  <!-- Blog post-->
                  <div class="card mb-4 shadow-sm">
@@ -44,6 +42,6 @@
           
           @endforelse
         </div>
-        {{ $article->links() }}
+        {{ $articles->links() }}
     </div>
 @endsection

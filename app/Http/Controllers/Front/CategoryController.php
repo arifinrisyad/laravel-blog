@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class CategoryController extends Controller
 {
@@ -16,6 +17,17 @@ class CategoryController extends Controller
             })->latest()->paginate(9),
             'category' => $slugCategory,
             'category_navbar'  => Category::latest()->take(3)->get()
+        ]);
+    }
+
+    public function allCategory()
+    {
+        $category = Category::withCount(['Articles' => function (builder $query) {
+            $query->where('status', 1);
+        }])->latest()->get();
+
+        return view('front.category.all-category', [
+            'category' => $category
         ]);
     }
 }

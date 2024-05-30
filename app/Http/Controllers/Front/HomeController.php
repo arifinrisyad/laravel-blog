@@ -18,16 +18,11 @@ class HomeController extends Controller
         return view('front.home.index',[
             'latest_post' => Article::latest()->first(),
             'articles'    =>  Article::with('Category')->whereStatus(1)->latest()->Paginate(3),
-            'categories'  => Category::latest()->get(),
-            'category_navbar'  => Category::latest()->take(3)->get()
         ]);
     }
 
     public function about()
     {
-        return view('front.home.about', [
-            'categories'  => Category::latest()->get(),
-            'category_navbar'  => Category::latest()->take(3)->get()
-        ]);
+        return view('front.home.about');
     }
 }

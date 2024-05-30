@@ -17,11 +17,18 @@
       @if (auth()->user()->role == 1)
       <li class="nav-item">
         <a class="nav-link" href="{{url('categories')}}">
-          <span data-feather="shopping-cart"></span>
+          <span data-feather="folder"></span>
           Categories
         </a>
       </li>
       @endif
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('config')}}">
+            <span data-feather="list"></span>
+          Config
+          </a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url('users')}}">
@@ -29,6 +36,7 @@
            Users
           </a>
         </li>
+
         <li class="nav-item">
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf

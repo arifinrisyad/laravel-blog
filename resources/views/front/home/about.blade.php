@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
-            <div class="col-lg-8">
+            <div class="col-lg-8"  data-aos="zoom-out">
                 <!-- Featured blog post-->
                 <div class="card mb-4 shadow-sm">
                     <a href="{{ asset('front/img/laravel.png')}}">

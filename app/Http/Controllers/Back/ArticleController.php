@@ -72,6 +72,7 @@ class ArticleController extends Controller
         $fileName = uniqid().'.'.$file->getClientOriginalExtension();
         $file->storeAs('back/'. $fileName);
 
+        $data['user_id'] = auth()->user()->id;
         $data['img'] = $fileName;
         $data['slug'] = Str::slug($data['title']);;
 
@@ -86,7 +87,7 @@ class ArticleController extends Controller
     public function show(string $id)
     {
         return view('back.article.show', [
-            'article' => Article::find($id)
+            'article' => Article::with(['User', 'Category'])->find($id)
         ]);
     }
 
@@ -122,7 +123,7 @@ class ArticleController extends Controller
         }
         
 
-      
+        $data['user_id'] = auth()->user()->id;
         $data['slug'] = Str::slug($data['title']);;
 
         Article::find($id)->update($data);

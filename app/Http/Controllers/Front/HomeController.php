@@ -11,13 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-     
-       
-
-
         return view('front.home.index',[
-            'latest_post' => Article::latest()->first(),
-            'articles'    =>  Article::with('Category')->whereStatus(1)->latest()->Paginate(3),
+            'latest_post' => Article::with(['User', 'Category'])->latest()->first(),
+            'articles'    =>  Article::with(['User', 'Category'])->whereStatus(1)->latest()->Paginate(3),
         ]);
     }
 

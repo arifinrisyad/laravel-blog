@@ -29,7 +29,7 @@
                             alt="..." /></a>
                     <div class="card-body card-height">
                         <div class="small text-muted">
-                            {{ $item->created_at->format('d-m-Y') }}
+                            {{ $item->created_at->format('d-m-Y') }} | {{$item->User->name}} |
                             <a href="{{ url('category/' . $item->category->slug) }}">
                                 {{ $item->Category->name }}</a>
                         </div>

@@ -29,8 +29,11 @@
 
                         </p>
                      <ul>
-                        <li>Phone: +6282277212295</li>
-                        <li>Email: Arifin@gmail.com</li>
+                        <li>Phone   :{{$config['phone']}}</li>
+                        <li>Email   : {{$config['email']}}</li>
+                      <li> <a href="https://youtube.com/{{$config['youtube']}}">Youtube</a></li>
+                      <li> <a href="https://facebook.com/{{$config['facebook']}}">Facebook</a></li>
+                      <li> <a href="https://instagram.com/{{$config['instagram']}}">Instagram</a></li>
                      </ul>
 
                     </div>

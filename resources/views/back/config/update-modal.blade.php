@@ -25,7 +25,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
                 <div class="mb-3">
                     <label for="value">Value</label>
-                    <textarea name="value" id="value" cols="30" rows="5" class="form-control @error('value') is-invalid @enderror">{{old('value', $item->name)}}</textarea>
+                    <textarea name="value" id="value" cols="30" rows="5" class="form-control @error('value') is-invalid @enderror">{{old('value', $item->value)}}</textarea>
                   
                     @error('value')
                         <div class="invalid-feedback">

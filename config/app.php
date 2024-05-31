@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use NunoMaduro\Collision\Provider;
 
 return [
 
@@ -196,6 +197,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\SideWidgetProvider::class,
+        App\Providers\TemplateProvider::class,
 
     ],
 

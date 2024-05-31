@@ -1,5 +1,16 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+    <meta name="description" value="All Category Blog Arifin Risyad, Seputar Pemrograman dan Teknologi Terbaru">
+    <meta name="keyword" value="list category blog laravel, kategori blog laravel tugas, daftar category blog laravel">
+    <meta property="og:site_title" content="All Category Arifin - Risyad" />
+    <meta property="og:url" value="{{url()->current()}}">
+    <meta property="og:site_name" content="Blog Laravel" />
+    <meta property="og:description" value="All Category Blog Arifin Risyad, Seputar Pemrograman dan Teknologi Terbaru">
+    <meta property="og:image" value="https://mubatekno.com/mubatekno-logo.png">
+@endpush
+
+
 @section('title', 'All Category Arifin - Risyad')
 
 @section('content')

@@ -1,5 +1,16 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+    <meta name="description" value="Article Blog Arifin Risyad, Seputar Pemrograman dan Teknologi Terbaru">
+    <meta name="keyword" value="list article blog laravel, article blog laravel tugas, artikel blog laravel">
+    <meta property="og:site_title" content="Article Blog - Arifin Risyad" />
+    <meta property="og:url" value="{{url()->current()}}">
+    <meta property="og:site_name" content="Blog Laravel" />
+    <meta property="og:description" value="Article Blog Arifin Risyad, Seputar Pemrograman dan Teknologi Terbaru">
+    <meta property="og:image" value="https://mubatekno.com/mubatekno-logo.png">
+@endpush
+
+
 @section('title', 'Article Blog - Arifin Risyad')
 
 @section('content')

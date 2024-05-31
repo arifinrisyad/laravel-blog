@@ -1,5 +1,15 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+    <meta name="description" value="Blog Arifin Risyad, Seputar Pemrograman dan Teknologi Terbaru">
+    <meta name="keyword" value="Blog Laravel, Blog Laravel Tugas, Blog Laravel">
+    <meta property="og:site_title" content="Laravel Blog - Arifin Risyad" />
+    <meta property="og:url" value="{{url()->current()}}">
+    <meta property="og:site_name" content="Blog Laravel" />
+    <meta property="og:description" value="Blog Arifin Risyad, Seputar Pemrograman dan Teknologi Terbaru">
+    <meta property="og:image" value="{{ asset('storage/back/' . $latest_post->img) }}">
+@endpush
+
 @section('title', 'Laravel Blog - Arifin Risyad')
 
 @section('content')

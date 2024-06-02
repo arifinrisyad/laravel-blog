@@ -39,7 +39,7 @@
               </tr>
               <tr>
                 <th>Status</th>
-               @if ($article->Status == 1)
+               @if ($article->status == 1)
                    <td>: <span class="badge bg-success">Published</span></td>
                @else
                <td>: <span class="badge bg-danger">Private</span></td>
